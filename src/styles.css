@@ -1,0 +1,69 @@
+@import "tailwindcss";
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../node_modules/flowbite";
+
+/* series 1: present */
+.apexcharts-bar-series .apexcharts-series:nth-child(1) path {
+  fill: #BD9BE7 !important;
+}
+
+/* series 2: absent */
+.apexcharts-bar-series .apexcharts-series:nth-child(2) path {
+  fill: #4F3E65 !important;
+}
+
+/* series 3: late */
+.apexcharts-bar-series .apexcharts-series:nth-child(3) path {
+  fill: #9B70D3 !important;
+}
+
+
+* {
+font-family: "Expletus Sans", sans-serif;
+}
+
+
+
+table {
+display: table;
+}
+
+
+
+
+
+@theme {
+--color-brand : var(--color-second);
+--color-main : #46296B ;
+--color-second : #0f0d11 ;
+--color-third : #fff ;
+--color-fourth : #343236 ;
+--color-five : #757575 ;
+--color-six : rgba(117, 117, 117 , 50%); 
+--color-seven : #E53847;
+--color-bg : #DCD9DF ;
+--text-mainFont : 16px;
+--color-present : #1FC16B;
+--color-absent : #E53847;
+--color-late : #E5CF29;
+}
+
+
+
+* {
+transition: 0.5s linear;
+}
+
+
+::selection {
+background-color: var(--color-main);
+color: white;
+}
+
+path.apexcharts-bar-area.undefined {
+stroke: var(--color-fourth) !important;
+fill: var(--color-fourth) !important;
+}
+
+

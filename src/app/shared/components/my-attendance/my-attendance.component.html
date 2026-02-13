@@ -1,0 +1,263 @@
+<div class="flex flex-col justify-between h-full gap-2">
+  <!-- head of attendance -->
+  <div
+    class="flex py-6 flex-col lg:flex-row gap-3 lg:gap-0 items-center justify-between"
+  >
+    <p
+      class="text-[20px] lg:text-[30px] font-bold lg:leading-12.75 text-center lg:text-left"
+    >
+      Your presence makes a difference. <br />
+      Great to see you!
+    </p>
+
+    <div class="size-71.75 rounded-[50%] border border-main p-2">
+      <div
+        class="bg-main size-full rounded-[50%] flex items-center justify-center flex-col gap-7 py-20.25"
+      >
+        <p class="text-[64px] font-bold text-white leading-9">10</p>
+        <p class="text-[26px] font-bold text-white leading-9.75">
+          Attended Days
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- end head of attendance -->
+
+  <!-- last section in attendance -->
+  <div class="border border-six py-2 px-1 lg:p-4 gap-4 flex flex-col rounded-[8px]">
+    <div
+      class="flex justify-center lg:justify-between items-center flex-wrap lg:gap-0 gap-2"
+    >
+      <!-- start attendance navs -->
+      <ul class="flex justify-start p-2">
+        <li
+          (click)="attendNav = 'timesheet'"
+          class="cursor-pointer flex lg:justify-center justify-start items-center py-1 px-2 md:px-4 md:py-2 lg:py-2 lg:px-10  md:gap-2.5 rounded-l-[16px]  lg:gap-2.5 gap-2 text-second border-main border"
+          [class.!bg-main]="attendNav == 'timesheet'"
+          [class.!text-white]="attendNav == 'timesheet'"
+        >
+          <img
+            src="./images/sort-by-time-outline-active.png"
+            class="hidden"
+            [class.!inline]="attendNav == 'timesheet'"
+            alt=""
+          /><img
+            src="./images/sort-by-time-outline-not-active.png"
+            class="hidden"
+            [class.!inline]="attendNav !== 'timesheet'"
+            alt=""
+          />Timesheet
+        </li>
+        <li
+          (click)="attendNav = 'complaints'"
+          class="cursor-pointer flex items-center lg:justify-center justify-start py-1 px-2 md:px-4 md:py-2 lg:py-2 lg:px-10  lg:gap-2.5 gap-2 rounded-r-[16px]    text-second border border-main"
+          [class.!bg-main]="attendNav == 'complaints'"
+          [class.!text-white]="attendNav == 'complaints'"
+        >
+          <img
+            src="./images/notification-lines-remove-outline-active.png"
+            class="hidden"
+            [class.!inline]="attendNav == 'complaints'"
+            alt=""
+          /><img
+            src="./images/notification-lines-remove-outline-not-active.png"
+            class="hidden"
+            [class.!inline]="attendNav !== 'complaints'"
+            alt=""
+          />Complaints
+        </li>
+      </ul>
+      <!-- end of attendance navs -->
+
+      <!-- add icon -->
+      @if (attendNav == "complaints") {
+        <div
+          class="flex items-center justify-center px-3 py-2 cursor-pointer rounded-lg bg-second"
+          (click)="complaintsModelIsOpen = true"
+        >
+          <i class="fa-solid fa-plus text-white text-[20px]"></i>
+        </div>
+      }
+
+      <div
+        class="fixed inset-0 bg-black/30 items-center justify-center hidden"
+        [class.!flex]="complaintsModelIsOpen == true"
+      >
+        <div
+          class="pb-6 rounded-[8px] w-[80%] lg:w-184 gap-8 flex flex-col bg-white"
+        >
+          <div
+            class="flex items-center justify-between text-main p-4 border-b border-main"
+          >
+            <p class="lg:text-[34px] text-[25px] leading-12.75">
+              File Complaint
+            </p>
+            <div
+              class="size-10 rounded-[50%] cursor-pointer flex items-center justify-center border border-main"
+              (click)="complaintsModelIsOpen = false"
+            >
+              <i class="text-[20px] fa-solid fa-xmark"></i>
+            </div>
+          </div>
+
+          <textarea
+            rows="10"
+            class="rounded-xs mx-auto border border-five focus:border-main w-[80%] resize-none"
+          ></textarea>
+
+          <button
+            class="self-center bg-second px-4 py-2 rounded-3xl text-white transition-all duration-500 hover:bg-main cursor-pointer"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- timesheet choice -->
+    @if (attendNav == "timesheet") {
+      <table padding="10" class="w-full lg:text-mainFont text-[14px]">
+        <thead>
+          <tr class="bg-fourth text-white">
+            <td class="lg:px-4 py-2 p-2">Date</td>
+            <td class="lg:px-4 py-2 p-2">Mark In</td>
+            <td class="lg:px-4 py-2 p-2">Mark Out</td>
+            <td class="lg:px-4 py-2 p-2">Status</td>
+          </tr>
+        </thead>
+
+        <tbody class="text-five">
+          <tr class=" ">
+            <td class="lg:px-4 py-2 p-2">Dec 11</td>
+            <td class="lg:px-4 py-2 p-2">9:00</td>
+            <td class="lg:px-4 py-2 p-2">17:00</td>
+            <td class="lg:px-4 py-2 p-2 flex items-center justify-between">
+              Present
+              <div class="size-3.75 rounded-[50%] bg-present"></div>
+            </td>
+          </tr>
+          <tr class=" ">
+            <td class="lg:px-4 py-2 p-2">Dec 11</td>
+            <td class="lg:px-4 py-2 p-2">9:00</td>
+            <td class="lg:px-4 py-2 p-2">17:00</td>
+            <td class="lg:px-4 py-2 p-2 flex items-center justify-between">
+              Present
+              <div class="size-3.75 rounded-[50%] bg-present"></div>
+            </td>
+          </tr>
+          <tr class=" ">
+            <td class="lg:px-4 py-2 p-2">Dec 11</td>
+            <td class="lg:px-4 py-2 p-2">9:00</td>
+            <td class="lg:px-4 py-2 p-2">17:00</td>
+            <td class="lg:px-4 py-2 p-2 flex items-center justify-between">
+              Present
+              <div class="size-3.75 rounded-[50%] bg-present"></div>
+            </td>
+          </tr>
+          <tr class=" ">
+            <td class="lg:px-4 py-2 p-2">Dec 11</td>
+            <td class="lg:px-4 py-2 p-2">9:00</td>
+            <td class="lg:px-4 py-2 p-2">17:00</td>
+            <td class="lg:px-4 py-2 p-2 flex items-center justify-between">
+              Present
+              <div class="size-3.75 rounded-[50%] bg-present"></div>
+            </td>
+          </tr>
+          <tr class=" ">
+            <td class="lg:px-4 py-2 p-2">Dec 11</td>
+            <td class="lg:px-4 py-2 p-2">9:00</td>
+            <td class="lg:px-4 py-2 p-2">17:00</td>
+            <td class="lg:px-4 py-2 p-2 flex items-center justify-between">
+              Present
+              <div class="size-3.75 rounded-[50%] bg-present"></div>
+            </td>
+          </tr>
+          <tr class=" ">
+            <td class="lg:px-4 py-2 p-2">Dec 11</td>
+            <td class="lg:px-4 py-2 p-2">9:00</td>
+            <td class="lg:px-4 py-2 p-2">17:00</td>
+            <td class="lg:px-4 py-2 p-2 flex items-center justify-between">
+              Late
+              <div class="size-3.75 rounded-[50%] bg-late"></div>
+            </td>
+          </tr>
+          <tr class=" ">
+            <td class="lg:px-4 py-2 p-2">Dec 11</td>
+            <td class="lg:px-4 py-2 p-2">9:00</td>
+            <td class="lg:px-4 py-2 p-2">17:00</td>
+            <td class="lg:px-4 py-2 p-2 flex items-center justify-between">
+              Absent
+              <div class="size-3.75 rounded-[50%] bg-absent"></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="flex justify-end p-2 gap-4">
+        <button
+          class="flex items-center justify-center size-10 rounded bg-second cursor-pointer"
+        >
+          <i class="text-[20px] fa-solid fa-angle-left text-white"></i>
+        </button>
+        <button
+          class="flex items-center justify-center size-10 rounded bg-second cursor-pointer"
+        >
+          <i class="text-[20px] fa-solid fa-angle-right text-white"></i>
+        </button>
+      </div>
+      <!-- end timesheet choice -->
+    }
+    <!-- start of complaints -->
+    @else if (attendNav == "complaints") {
+      <div class="pt-4 flex flex-col gap-3 w-full h-full">
+        <!-- complaints card -->
+        <div
+          class="grid gap-2 lg:grid-cols-12 place-items-start even:border-t even:border-bg pt-2"
+        >
+          <p class="text-five lg:col-span-8">
+            I forgot to clock out on Tuesday, October 15th because I was dealing
+            with an urgent client issue that required immediate attention. I
+            worked my full 8-hour shift until 5:00 PM but the system shows I'm
+            still clocked in.
+          </p>
+          <p class="text-six lg:col-span-2">16-10-2025</p>
+          <div class="gap-4 flex items-center justify-between lg:col-span-2">
+            Absent
+            <div class="size-3.75 rounded-[50%] bg-absent"></div>
+          </div>
+        </div>
+        <div
+          class="grid gap-2 lg:grid-cols-12 place-items-start even:border-t even:border-bg pt-2"
+        >
+          <p class="text-five lg:col-span-8">
+            I forgot to clock out on Tuesday, October 15th because I was dealing
+            with an urgent client issue that required immediate attention. I
+            worked my full 8-hour shift until 5:00 PM but the system shows I'm
+            still clocked in.
+          </p>
+          <p class="text-six lg:col-span-2">16-10-2025</p>
+          <div class="gap-4 flex items-center justify-between lg:col-span-2">
+            Absent
+            <div class="size-3.75 rounded-[50%] bg-absent"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-end p-2 gap-4">
+        <button
+          class="flex items-center justify-center size-10 rounded bg-second cursor-pointer"
+        >
+          <i class="text-[20px] fa-solid fa-angle-left text-white"></i>
+        </button>
+        <button
+          class="flex items-center justify-center size-10 rounded bg-second cursor-pointer"
+        >
+          <i class="text-[20px] fa-solid fa-angle-right text-white"></i>
+        </button>
+      </div>
+    }
+    <!-- end of complaints -->
+  </div>
+
+  <!-- end last section in attendance -->
+</div>

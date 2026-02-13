@@ -1,0 +1,361 @@
+<!-- start dashboard -->
+<div class="xl:bg-bg bg-white xl:px-4.25 xl:py-4.75">
+  <div class="flex flex-col xl:flex-row xl:justify-between items-stretch p-0">
+    <!-- menu bar in mobile -->
+    <div class="flex flex-col xl:hidden p-2">
+      <div class="flex justify-between">
+        <!-- user nav -->
+        <div class="user-nav items-center justify-end gap-1 flex">
+          <div
+            routerLink="/dashboard/notifications"
+            routerLinkActive="!bg-main"
+            class="size-12.5 flex items-center justify-center relative rounded-[50%] cursor-pointer bg-second transition-all duration-500 hover:bg-main"
+          >
+            <i
+              class="fa-regular fa-bell text-white text-[20px] cursor-pointer"
+            ></i>
+            <div
+              class="dott size-3 rounded-[50%] bg-seven absolute top-0 right-0"
+            ></div>
+          </div>
+
+          <div
+            routerLink="/dashboard/profile"
+            class="flex items-center gap-2.5"
+          >
+            <div
+              routerLinkActive="!bg-main !text-white"
+              class="size-12.5 flex items-center justify-center rounded-[50%] cursor-pointer bg-second transition-all duration-500 hover:bg-main"
+            >
+              <i class="fa-regular fa-user text-white text-[20px]"></i>
+            </div>
+
+            <p>Mohamed Abdel.</p>
+          </div>
+        </div>
+        <!-- end user nav -->
+
+        <div>
+          <button
+            data-collapse-toggle="navbar-default"
+            type="button"
+            class="inline-flex ms-auto cursor-pointer items-center p-2 w-12 h-12 justify-center text-sm text-main rounded-base xl:hidden hover:text-five transition-all duration-500 focus:outline-none"
+            aria-controls="navbar-default"
+            aria-expanded="false"
+          >
+            <span class="sr-only">Open main menu</span>
+            <svg
+              class="w-15 h-15"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-width="2"
+                d="M5 7h14M5 12h14M5 17h14"
+              />
+            </svg>
+          </button>
+
+          <div
+            class="hidden w-[80%] z-10000000 xl:block xl:w-full transition-all duration-500 p-2 bg-second absolute left-0 top-0 rounded-tr-md rounded-br-md"
+            #mobileNav
+            id="navbar-default"
+          >
+            <div class="flex flex-col">
+              <i
+                class="fa-solid fa-xmark self-end text-white text-[20px] cursor-pointer"
+                (click)="mobileNav.classList.add('hidden')"
+              ></i>
+              <app-dashboard-nav class="min-h-screen"></app-dashboard-nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    @if (!mobileNav.classList.contains("hidden")) {
+      <div class="fixed inset-0 bg-black/50 h-screen z-10000"></div>
+    }
+
+    <!-- end of menu bar in mobile -->
+
+    <!-- start left side -->
+    <div
+      class="bg-second rounded-tl-3xl rounded-bl-3xl p-4 hidden xl:block w-[30%] transition-all duration-500"
+      [class.!w-auto]="sideBarIsOpen"
+    >
+      <img
+        src="../images/hamburger-menu-outline.svg"
+        class="cursor-pointer"
+        (click)="sideBarIsOpen = !sideBarIsOpen"
+        alt=""
+      />
+      <ul class="flex flex-col py-6 px-2 items-start gap-15 transition-all duration-500">
+        <li
+          class="cursor-pointer flex items-center py-2 px-4 gap-3 text-white w-full rounded-xl"
+          routerLink="/dashboard"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="bg-white !text-main"
+        >
+          <img
+            src="../images/home-2-active.png"
+            class="hidden"
+            [class.inline]="_router.url == '/dashboard'"
+            alt=""
+          /><img
+            src="../images/home-2-not-active.png"
+            [class.!inline]="_router.url !== '/dashboard'"
+            class="hidden"
+            alt=""
+          /><span class="text-[22px]" [class.!hidden]="sideBarIsOpen"
+            >Dashboard</span
+          >
+        </li>
+
+        <li
+          class="cursor-pointer flex items-center py-2 px-4 gap-3 text-white w-full rounded-xl"
+          routerLink="/dashboard/my-attendance"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="bg-white !text-main"
+        >
+          <img
+            src="../images/calendar-outline-active.png"
+            class="hidden"
+            [class.inline]="_router.url == '/dashboard/my-attendance'"
+            alt=""
+          /><img
+            src="../images/calendar-outline.png"
+            [class.!inline]="_router.url !== '/dashboard/my-attendance'"
+            class="hidden"
+            alt=""
+          /><span class="text-[22px]" [class.!hidden]="sideBarIsOpen"
+            >My Attendance</span
+          >
+        </li>
+
+        <li
+          class="cursor-pointer flex items-center py-2 px-4 gap-3 text-white w-full rounded-xl"
+          routerLink="/dashboard/my-requests"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="bg-white !text-main"
+        >
+          <img
+            src="../images/question-square-outline-active.png"
+            class="hidden"
+            [class.inline]="_router.url == '/dashboard/my-requests'"
+            alt=""
+          /><img
+            src="../images/question-square-outline.png"
+            [class.!inline]="_router.url !== '/dashboard/my-requests'"
+            class="hidden"
+            alt=""
+          /><span class="text-[22px]" [class.!hidden]="sideBarIsOpen"
+            >My Requests</span
+          >
+        </li>
+
+        <li
+          class="cursor-pointer flex items-center py-2 px-4 gap-3 text-white w-full rounded-xl"
+          routerLink="/dashboard/events"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="bg-white !text-main"
+        >
+          <img
+            src="../images/stars-line-outline-active.png"
+            class="hidden"
+            [class.inline]="_router.url == '/dashboard/events'"
+            alt=""
+          /><img
+            src="../images/stars-line-outline.png"
+            [class.!inline]="_router.url !== '/dashboard/events'"
+            class="hidden"
+            alt=""
+          /><span class="text-[22px]" [class.!hidden]="sideBarIsOpen"
+            >Events</span
+          >
+        </li>
+
+        <li
+          class="cursor-pointer flex items-center py-2 px-4 gap-3 text-white w-full rounded-xl"
+          routerLink="/dashboard/my-payslips"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="bg-white !text-main"
+        >
+          <img
+            src="../images/document-text-outline-active.png"
+            class="hidden"
+            [class.inline]="_router.url == '/dashboard/my-payslips'"
+            alt=""
+          /><img
+            src="../images/document-text-outline.png"
+            [class.!inline]="_router.url !== '/dashboard/my-payslips'"
+            class="hidden"
+            alt=""
+          /><span class="text-[22px]" [class.!hidden]="sideBarIsOpen"
+            >My Payslips</span
+          >
+        </li>
+
+        <li  class="py-2 px-4 rounded-xl w-full text-white" 
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="bg-white text-main!">
+         <span routerLink="/dashboard/team-management" class="cursor-pointer flex items-center  gap-3 ">
+           <img
+            src="../images/users-group-rounded-outline-active.png"
+            class="hidden"
+            [class.inline]="_router.url.includes('/dashboard/team-management')"
+            alt=""
+          /><img
+            src="../images/users-group-rounded-outline.png"
+            [class.!inline]="!_router.url.includes('/dashboard/team-management')"
+            class="hidden"
+            alt=""
+          /><span class="text-[22px]" (click)="teamMangementChildrenShow = !teamMangementChildrenShow" [class.!hidden]="sideBarIsOpen"
+            >Team Managment</span
+          >
+         </span>
+
+          <ul  [class.!hidden]="!_router.url.includes('/dashboard/team-management')" [class.!flex]="teamMangementChildrenShow || _router.url.includes('/dashboard/team-management')" class="mt-10 hidden flex-col px-4">
+            <li routerLink="/dashboard/team-management" class="cursor-pointer flex items-center gap-3 p-2"><img class="hidden" [class.!inline]="_router.url =='/dashboard/team-management'" src="./images/star-shine-bold-active.svg" alt=""><img class="hidden" [class.!inline]="_router.url!='/dashboard/team-management'" src="./images/star-shine-bold.svg" alt="">Dashboard</li>
+            <li routerLink="/dashboard/team-management/attendance" class="cursor-pointer flex items-center gap-3 p-2"><img class="hidden" [class.!inline]="_router.url =='/dashboard/team-management/attendance'" src="./images/star-shine-bold-active.svg" alt=""><img class="hidden" [class.!inline]="_router.url!='/dashboard/team-management/attendance'" src="./images/star-shine-bold.svg" alt="">Attendance</li>
+            <li routerLink="/dashboard/team-management/team-requests" class="cursor-pointer flex items-center gap-3 p-2"><img class="hidden" [class.!inline]="_router.url =='/dashboard/team-management/team-requests'" src="./images/star-shine-bold-active.svg" alt=""><img class="hidden" [class.!inline]="_router.url!='/dashboard/team-management/team-requests'" src="./images/star-shine-bold.svg" alt="">Team Requests</li>
+            <li routerLink="/dashboard/team-management/team-members" class="cursor-pointer flex items-center gap-3 p-2"><img class="hidden" [class.!inline]="_router.url =='/dashboard/team-management/team-members'" src="./images/star-shine-bold-active.svg" alt=""><img class="hidden" [class.!inline]="_router.url!='/dashboard/team-management/team-members'" src="./images/star-shine-bold.svg" alt="">Team Members</li>
+            <li routerLink="/dashboard/team-management/team-compensation" class="cursor-pointer flex items-center gap-3 p-2"><img class="hidden" [class.!inline]="_router.url =='/dashboard/team-management/team-compensation'" src="./images/star-shine-bold-active.svg" alt=""><img class="hidden" [class.!inline]="_router.url!='/dashboard/team-management/team-compensation'" src="./images/star-shine-bold.svg" alt="">Team Compensation</li>
+          </ul>
+        </li>
+
+        <li
+          class="cursor-pointer flex items-center py-2 px-4 gap-3 text-white w-full rounded-xl"
+          routerLink="/dashboard/leave&attendance"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="bg-white !text-main"
+        >
+          <img
+            src="../images/calendar-outline-active.png"
+            class="hidden"
+            [class.inline]="_router.url == '/dashboard/leave&attendance'"
+            alt=""
+          /><img
+            src="../images/calendar-outline.png"
+            [class.!inline]="_router.url !== '/dashboard/leave&attendance'"
+            class="hidden"
+            alt=""
+          /><span class="text-[22px]" [class.!hidden]="sideBarIsOpen"
+            >Leave & Attendance</span
+          >
+        </li>
+
+        <li
+          class="cursor-pointer flex items-center py-2 px-4 gap-3 text-white w-full rounded-xl"
+          routerLink="/dashboard/recruitment"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="bg-white !text-main"
+        >
+          <img
+            src="../images/user-check-outline-actived.png"
+            class="hidden"
+            [class.inline]="_router.url == '/dashboard/recruitment'"
+            alt=""
+          /><img
+            src="../images/user-check-outline.png"
+            [class.!inline]="_router.url !== '/dashboard/recruitment'"
+            class="hidden"
+            alt=""
+          /><span class="text-[22px]" [class.!hidden]="sideBarIsOpen"
+            >Recruitment</span
+          >
+        </li>
+
+        <li
+          class="cursor-pointer flex items-center py-2 px-4 gap-3 text-white w-full rounded-xl"
+          routerLink="/dashboard/payroll"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="bg-white !text-main"
+        >
+          <img
+            src="../images/dollar-outline-actived.png"
+            class="hidden"
+            [class.inline]="_router.url == '/dashboard/payroll'"
+            alt=""
+          /><img
+            src="../images/dollar-outline.png"
+            [class.!inline]="_router.url !== '/dashboard/payroll'"
+            class="hidden"
+            alt=""
+          /><span class="text-[22px]" [class.!hidden]="sideBarIsOpen"
+            >Payroll</span
+          >
+        </li>
+
+        <li
+          class="cursor-pointer flex items-center py-2 px-4 gap-3 text-white w-full rounded-xl"
+          routerLink="/dashboard/employees"
+          [routerLinkActiveOptions]="{ exact: true }"
+          routerLinkActive="bg-white !text-main"
+        >
+          <img
+            src="../images/users-group-two-rounded-outline-actived.png"
+            class="hidden"
+            [class.inline]="_router.url == '/dashboard/employees'"
+            alt=""
+          /><img
+            src="../images/users-group-two-rounded-outline.png"
+            [class.!inline]="_router.url !== '/dashboard/employees'"
+            class="hidden"
+            alt=""
+          /><span class="text-[22px]" [class.!hidden]="sideBarIsOpen"
+            >Employees</span
+          >
+        </li>
+      </ul>
+    </div>
+    <!-- end left side -->
+
+    <!-- start right side -->
+    <div
+      class="xl:bg-white xl:w-268.25 grow rounded-tr-xl rounded-tl-xl xl:rounded-tl-0 flex flex-col xl:gap-2 gap-6 xl:rounded-tr-3xl xl:rounded-br-3xl p-2 xl:p-6"
+    >
+      <!-- user nav -->
+      <div class="user-nav items-center justify-end gap-2.5 hidden xl:flex">
+        <div
+          routerLink="/dashboard/notifications"
+          routerLinkActive="!bg-main"
+          class="size-12.5 flex items-center justify-center relative rounded-[50%] cursor-pointer bg-second transition-all duration-500 hover:bg-main"
+        >
+          <i
+            class="fa-regular fa-bell text-white text-[20px] cursor-pointer"
+          ></i>
+          <div
+            class="dott size-3 rounded-[50%] bg-seven absolute top-0 right-0"
+          ></div>
+        </div>
+
+        <div routerLink="/dashboard/profile" class="flex items-center gap-2.5">
+          <div
+            routerLinkActive="!bg-main !text-white"
+            class="size-12.5 flex items-center justify-center rounded-[50%] cursor-pointer bg-second transition-all duration-500 hover:bg-main"
+          >
+            <i class="fa-regular fa-user text-white text-[20px]"></i>
+          </div>
+
+          <p>Mohamed Abdel.</p>
+        </div>
+      </div>
+      <!-- end user nav -->
+
+      <!-- content -->
+      <div class="xl:p-6 p-2 rounded-[16px] border border-bg h-full">
+        <router-outlet></router-outlet>
+      </div>
+      <!-- end content -->
+    </div>
+
+    <!-- end right side -->
+  </div>
+</div>

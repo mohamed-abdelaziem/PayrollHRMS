@@ -1,0 +1,148 @@
+<div class="flex flex-col justify-between h-full gap-6">
+  <div class="rounded-3xl border border-[#D0CBD5] py-6 space-y-4">
+    <p
+      class="px-10 py-2 gap-2.5 rounded-r-[16px] bg-[#AE84E2] text-white md:text-[24px] w-fit"
+    >
+      Today’s Attendance Summary
+    </p>
+    <div class="parent h-95.75 overflow-auto px-6 flex flex-col">
+      <div
+        class="child py-2.5 border-b border-bg flex items-center justify-between"
+      >
+        <div class="left-side flex items-center gap-6">
+          <img
+            src="../images/myPhoto.jpg"
+            class="w-10 h-10 rounded-full object-cover border"
+            alt=""
+          />
+          <div class="child-content space-y-0.5">
+            <p class="font-semibold text-five">Mohamed Abdelaziem</p>
+            <p class="text-[#B3B3B3]">Engineer</p>
+          </div>
+        </div>
+        <div class="right-side gap-2.5 flex items-center">
+          <p class="font-normal text-fourth">Present</p>
+          <span class="w-3.75 h-3.75 bg-green-500 block rounded-full"></span>
+        </div>
+      </div>
+      <div
+        class="child py-2.5 border-b border-bg flex items-center justify-between"
+      >
+        <div class="left-side flex items-center gap-6">
+          <img
+            src="../images/myPhoto.jpg"
+            class="w-10 h-10 rounded-full object-cover border"
+            alt=""
+          />
+          <div class="child-content space-y-0.5">
+            <p class="font-semibold text-five">Mohamed Abdelaziem</p>
+            <p class="text-[#B3B3B3]">Engineer</p>
+          </div>
+        </div>
+        <div class="right-side gap-2.5 flex items-center">
+          <p class="font-normal text-fourth">Present</p>
+          <span class="w-3.75 h-3.75 bg-green-500 block rounded-full"></span>
+        </div>
+      </div>
+      <div
+        class="child py-2.5 border-b border-bg flex items-center justify-between"
+      >
+        <div class="left-side flex items-center gap-6">
+          <img
+            src="../images/myPhoto.jpg"
+            class="w-10 h-10 rounded-full object-cover border"
+            alt=""
+          />
+          <div class="child-content space-y-0.5">
+            <p class="font-semibold text-five">Mohamed Abdelaziem</p>
+            <p class="text-[#B3B3B3]">Engineer</p>
+          </div>
+        </div>
+        <div class="right-side gap-2.5 flex items-center">
+          <p class="font-normal text-fourth">Present</p>
+          <span class="w-3.75 h-3.75 bg-green-500 block rounded-full"></span>
+        </div>
+      </div>
+      <div
+        class="child py-2.5 border-b border-bg flex items-center justify-between"
+      >
+        <div class="left-side flex items-center gap-6">
+          <img
+            src="../images/myPhoto.jpg"
+            class="w-10 h-10 rounded-full object-cover border"
+            alt=""
+          />
+          <div class="child-content space-y-0.5">
+            <p class="font-semibold text-five">Mohamed Abdelaziem</p>
+            <p class="text-[#B3B3B3]">Engineer</p>
+          </div>
+        </div>
+        <div class="right-side gap-2.5 flex items-center">
+          <p class="font-normal text-fourth">Present</p>
+          <span class="w-3.75 h-3.75 bg-green-500 block rounded-full"></span>
+        </div>
+      </div>
+      <div
+        class="child py-2.5 border-b border-bg flex items-center justify-between"
+      >
+        <div class="left-side flex items-center gap-6">
+          <img
+            src="../images/myPhoto.jpg"
+            class="w-10 h-10 rounded-full object-cover border"
+            alt=""
+          />
+          <div class="child-content space-y-0.5">
+            <p class="font-semibold text-five">Mohamed Abdelaziem</p>
+            <p class="text-[#B3B3B3]">Engineer</p>
+          </div>
+        </div>
+        <div class="right-side gap-2.5 flex items-center">
+          <p class="font-normal text-fourth">Present</p>
+          <span class="w-3.75 h-3.75 bg-green-500 block rounded-full"></span>
+        </div>
+      </div>
+      <div
+        class="child py-2.5 border-b border-bg flex items-center justify-between"
+      >
+        <div class="left-side flex items-center gap-6">
+          <img
+            src="../images/myPhoto.jpg"
+            class="w-10 h-10 rounded-full object-cover border"
+            alt=""
+          />
+          <div class="child-content space-y-0.5">
+            <p class="font-semibold text-five">Mohamed Abdelaziem</p>
+            <p class="text-[#B3B3B3]">Engineer</p>
+          </div>
+        </div>
+        <div class="right-side gap-2.5 flex items-center">
+          <p class="font-normal text-fourth">Present</p>
+          <span class="w-3.75 h-3.75 bg-green-500 block rounded-full"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rounded-3xl  w-full border-2 border-bg px-4 py-7 flex flex-col items-start gap-4">
+    <p
+      class="px-10 py-2 gap-2.5 rounded-r-[16px] bg-[#AE84E2] text-white md:text-[24px] w-fit"
+    >
+      Today’s Attendance Summary
+    </p>
+
+    <!-- chart -->
+    <div class="w-full ">
+    <apx-chart
+  [series]="chartOptions.series"
+  [chart]="chartOptions.chart"
+  [colors]="chartOptions.colors"
+  [plotOptions]="chartOptions.plotOptions"
+  [dataLabels]="chartOptions.dataLabels"
+  [xaxis]="chartOptions.xaxis"
+  [grid]="chartOptions.grid"
+  [legend]="chartOptions.legend"
+  [tooltip]="chartOptions.tooltip">
+</apx-chart>
+    </div>
+  </div>
+</div>

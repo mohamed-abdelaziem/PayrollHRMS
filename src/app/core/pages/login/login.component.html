@@ -1,0 +1,94 @@
+
+    
+<!-- login page -->
+<div id="login" class="bg-bg py-2 min-h-screen">
+<div class="parent-of-form bg-third w-[95%] mx-auto h-full p-4 rounded-2xl">
+
+<div class="form border-2 border-bg rounded-2xl md:p-4 p-2 md:flex md:justify-center  md:items-center">
+
+<!-- image -->
+
+<div class=" image-of-login lg:w-[50%] flex justify-start lg:mb-0 mb-5">
+<img src="../images/image_of_login.png" class="md:w-full h-full rounded-2xl object-cover w-full" alt="">
+</div>
+
+
+
+<!-- form -->
+
+<div class="login-form md:w-[60%]  md:p-4 p-2">
+<form class="lg:max-w-lg mx-auto w-full" (ngSubmit)="login()" [formGroup]="loginForm">
+  <div class="mb-5">
+    <label for="email" class="block mb-2.5 text-sm font-medium text-heading">Email : </label>
+    <input formControlName="email" type="email" id="email" class="bg-neutral-secondary-medium border border-bg text-heading text-sm rounded-base focus:ring-main focus:border-mainring-main block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="Please Enter Your Email...." />
+  </div>
+
+
+@if (loginForm.get('email')?.touched) {
+    @if (loginForm.get('email')?.getError('required')) {
+    <div class="p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft" role="alert">
+  <span class="font-medium">Email Is Required</span>
+</div>
+  }
+
+  @if (loginForm.get('email')?.getError('email')) {
+        <div class="p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft" role="alert">
+  <span class="font-medium">Please Enter Valid Email</span>
+</div>
+  }
+}
+
+
+ 
+
+    <div class="mb-5">
+    <label for="Password" class="block mb-2.5 text-sm font-medium text-heading">Password : </label>
+    <input  formControlName="password" type="Password" id="Password" class="bg-neutral-secondary-medium border border-bg text-heading text-sm rounded-base focus:ring-main focus:border-mainring-main block w-full px-3 py-2.5 shadow-xs placeholder:text-body" placeholder="**********"/>
+  </div>
+
+
+@if (loginForm.get('password')?.touched) {
+    @if (loginForm.get('password')?.getError('required')) {
+        <div class="p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft" role="alert">
+  <span class="font-medium">Password is Required</span>
+</div>
+  }
+
+  @if (loginForm.get('password')?.getError('pattern')) {
+  <div class="p-4 mb-4 text-sm text-fg-danger-strong rounded-base bg-danger-soft" role="alert">
+  <span class="font-medium">Please Enter Valid Password</span>
+</div>
+  }
+}
+
+  <a [routerLink]="['/reset-password']" class="text-main font-semibold text-right block">Want to reset your password ?</a>
+  <button class="block w-fit text-mainFont bg-second text-white px-6 py-2 mx-auto mt-5 rounded-2xl cursor-pointer" type="submit">Login</button>
+</form>
+
+
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+
+

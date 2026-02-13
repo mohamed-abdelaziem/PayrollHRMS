@@ -1,0 +1,543 @@
+<div #parent class="h-full flex flex-col gap-y-5 items-stretch justify-between">
+  <div class="flex flex-col items-center gap-8">
+    <!-- start of top section of requset -->
+    <div
+      class="flex flex-col lg:flex-row p-2 text-center lg:text-left gap-7 rounded-2lg lg:rounded-[800px] rounded-xl border border-main w-full"
+    >
+      <div
+        class="lg:py-3.5 lg:px-8 lg:rounded-l-[300px] bg-main flex flex-col items-center justify-center lg:gap-4 gap-2 p-3 rounded-xl text-white grow"
+      >
+        <p class="text-[20px] lg:text-[25px] lg:leading-10.5 font-bold">
+          9 days remaining
+        </p>
+        <p class="text-[15px] md:text-[18px] lg:leading-6.75">Annual Leave</p>
+      </div>
+
+      <div
+        class="lg:py-3.5 lg:px-8 bg-main flex flex-col items-center justify-center lg:gap-4 gap-2 p-3 text-white grow"
+      >
+        <p class="text-[20px] lg:text-[25px] lg:leading-10.5 font-bold">
+          65 days used
+        </p>
+        <p class="text-[15px] md:text-[18px] lg:leading-6.75">Paid Sick Leave</p>
+      </div>
+
+      <div
+        class="lg:py-3.5 lg:px-8 lg:rounded-r-[300px] bg-main flex flex-col items-center justify-center lg:gap-4 gap-2 p-3 rounded-xl text-white grow"
+      >
+        <p
+          class="text-[20px] lg:text-[25px] text-center lg:leading-10.5 font-bold"
+        >
+          4 days remaining
+        </p>
+        <p class="text-[15px] md:text-[18px] lg:leading-6.75">Casual Leave</p>
+      </div>
+    </div>
+    <!-- end of top section in request -->
+    <!-- request text -->
+    <p class="text-[20px] lg:text-[30px] font-bold text-center w-full">
+      Here’s your full request timeline; all neatly organized.
+    </p>
+    <!-- end of request text -->
+  </div>
+
+  <div
+    class="gap-4 flex flex-col lg:p-4 p-1 border border-[#9C97A2] rounded-[8px]"
+  >
+    <div
+      class="flex py-2 justify-center lg:justify-between items-center flex-wrap gap-2"
+    >
+      <!-- request navs -->
+      <ul class="flex justify-start flex-wrap text-[12px] md:text-[18px]">
+        <li
+          (click)="requestNavs = 'leave'"
+          class="cursor-pointer flex lg:justify-center justify-start items-center py-1 px-2 md:px-4 md:py-2 lg:py-2 lg:px-10 rounded-l-[16px] md:gap-2.5 text-second border-main border"
+          [class.!bg-main]="requestNavs == 'leave'"
+          [class.!text-white]="requestNavs == 'leave'"
+        >
+          <img
+            src="./images/vactor-not-active.png"
+            class="hidden"
+            [class.!inline]="requestNavs !== 'leave'"
+            alt=""
+          /><img
+            src="./images/vactor-active.png"
+            class="hidden"
+            [class.!inline]="requestNavs == 'leave'"
+            alt=""
+          />Leave
+        </li>
+        <li
+          (click)="requestNavs = 'remote_work'"
+          class="cursor-pointer flex lg:justify-center justify-start items-center py-1 px-2 md:px-4 md:py-2 lg:py-2 lg:px-10 md:gap-2.5 text-second border-main border"
+          [class.!bg-main]="requestNavs == 'remote_work'"
+          [class.!text-white]="requestNavs == 'remote_work'"
+        >
+          <img
+            src="./images/home-2-not-active.png"
+            class="hidden"
+            [class.!inline]="requestNavs == 'remote_work'"
+            alt=""
+          /><img
+            src="./images/home-request-navs-not-active.png"
+            class="hidden"
+            [class.!inline]="requestNavs !== 'remote_work'"
+            alt=""
+          />Remote Work
+        </li>
+        <li
+          (click)="requestNavs = 'permission'"
+          class="cursor-pointer flex items-center lg:justify-center justify-start py-1 px-2 md:px-4 md:py-2 lg:py-2 lg:px-10 rounded-r-[16px] md:gap-2.5 text-second border border-main"
+          [class.!bg-main]="requestNavs == 'permission'"
+          [class.!text-white]="requestNavs == 'permission'"
+        >
+          <img
+            src="./images/clock-circle-outline-active.png"
+            class="hidden"
+            [class.!inline]="requestNavs == 'permission'"
+            alt=""
+          /><img
+            src="./images/clock-circle-not-active.png"
+            class="hidden"
+            [class.!inline]="requestNavs !== 'permission'"
+            alt=""
+          />Permissions
+        </li>
+      </ul>
+      <!-- end request navs -->
+
+      <div
+        (click)="showModel(requestNavs)"
+        class="flex items-center justify-center px-3 py-2 cursor-pointer rounded-lg bg-second"
+      >
+        <i class="fa-solid fa-plus text-white text-[20px]"></i>
+      </div>
+    </div>
+
+    <!-- request table -->
+
+    @if (requestNavs == "leave") {
+      <table padding="10" class="w-full lg:text-mainFont text-[12px]">
+        <thead>
+          <tr class="bg-fourth text-white">
+            <td class="lg:px-4 py-2 p-2">Leave Type</td>
+            <td class="lg:px-4 py-2 p-2">Start Date</td>
+            <td class="lg:px-4 py-2 p-2">End Date</td>
+            <td class="lg:px-4 py-2 p-2">Days</td>
+            <td class="lg:px-4 py-2 p-2">Status</td>
+          </tr>
+        </thead>
+
+        <tbody class="text-five">
+          <tr>
+            <td class="lg:px-4 py-2 p-2">Annual Leave</td>
+            <td class="lg:px-4 py-2 p-2">04-11-2025</td>
+            <td class="lg:px-4 py-2 p-2">20-11-2025</td>
+            <td class="lg:px-4 py-2 p-2">3</td>
+            <td class="lg:px-4 py-2 p-2 flex items-center justify-between">
+              Present
+              <div class="size-3.75 rounded-[50%] bg-present"></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="lg:px-4 py-2 p-2">Annual Leave</td>
+            <td class="lg:px-4 py-2 p-2">04-11-2025</td>
+            <td class="lg:px-4 py-2 p-2">20-11-2025</td>
+            <td class="lg:px-4 py-2 p-2">3</td>
+            <td class="lg:px-4 py-2 p-2 flex items-center justify-between">
+              Present
+              <div class="size-3.75 rounded-[50%] bg-present"></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="lg:px-4 py-2 p-2">Annual Leave</td>
+            <td class="lg:px-4 py-2 p-2">04-11-2025</td>
+            <td class="lg:px-4 py-2 p-2">20-11-2025</td>
+            <td class="lg:px-4 py-2 p-2">3</td>
+            <td class="lg:px-4 py-2 p-2 flex items-center justify-between">
+              Present
+              <div class="size-3.75 rounded-[50%] bg-present"></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="flex justify-end p-2 gap-4">
+        <button
+          class="flex items-center justify-center size-10 rounded bg-second cursor-pointer"
+        >
+          <i class="text-[20px] fa-solid fa-angle-left text-white"></i>
+        </button>
+        <button
+          class="flex items-center justify-center size-10 rounded bg-second cursor-pointer"
+        >
+          <i class="text-[20px] fa-solid fa-angle-right text-white"></i>
+        </button>
+      </div>
+    } @else if (requestNavs == "remote_work") {
+      <table padding="10" class="w-full lg:text-mainFont text-[12px]">
+        <thead>
+          <tr class="bg-fourth text-white">
+            <td class="lg:px-4 py-2 p-2">Start Date</td>
+            <td class="lg:px-4 py-2 p-2">End Date</td>
+            <td class="lg:px-4 py-2 p-2">Days</td>
+            <td class="lg:px-4 py-2 p-2">Status</td>
+          </tr>
+        </thead>
+
+        <tbody class="text-five">
+          <tr>
+            <td class="lg:px-4 py-2 p-2">04-11-2025</td>
+            <td class="lg:px-4 py-2 p-2">20-11-2025</td>
+            <td class="lg:px-4 py-2 p-2">3</td>
+            <td class="lg:px-4 py-2 p-2 flex items-center justify-between">
+              Present
+              <div class="size-3.75 rounded-[50%] bg-present"></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="lg:px-4 py-2 p-2">04-11-2025</td>
+            <td class="lg:px-4 py-2 p-2">20-11-2025</td>
+            <td class="lg:px-4 py-2 p-2">3</td>
+            <td class="lg:px-4 py-2 p-2 flex items-center justify-between">
+              Present
+              <div class="size-3.75 rounded-[50%] bg-present"></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="lg:px-4 py-2 p-2">04-11-2025</td>
+            <td class="lg:px-4 py-2 p-2">20-11-2025</td>
+            <td class="lg:px-4 py-2 p-2">3</td>
+            <td class="lg:px-4 py-2 p-2 flex items-center justify-between">
+              Present
+              <div class="size-3.75 rounded-[50%] bg-present"></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="flex justify-end p-2 gap-4">
+        <button
+          class="flex items-center justify-center size-10 rounded bg-second cursor-pointer"
+        >
+          <i class="text-[20px] fa-solid fa-angle-left text-white"></i>
+        </button>
+        <button
+          class="flex items-center justify-center size-10 rounded bg-second cursor-pointer"
+        >
+          <i class="text-[20px] fa-solid fa-angle-right text-white"></i>
+        </button>
+      </div>
+    } @else if (requestNavs == "permission") {
+      <table padding="10" class="w-full lg:text-mainFont text-[12px]">
+        <thead>
+          <tr class="bg-fourth text-white">
+            <td class="lg:px-4 py-2 p-2">Permission Type</td>
+            <td class="lg:px-4 py-2 p-2">Date</td>
+            <td class="lg:px-4 py-2 p-2">Hours Duration</td>
+            <td class="lg:px-4 py-2 p-2">Status</td>
+          </tr>
+        </thead>
+
+        <tbody class="text-five">
+          <tr class=" ">
+            <td class="lg:px-4 py-2 p-2">Late Leave</td>
+            <td class="lg:px-4 py-2 p-2">04-11-2025</td>
+            <td class="lg:px-4 py-2 p-2">3</td>
+            <td class="lg:px-4 py-2 p-2 flex items-center justify-between">
+              Present
+              <div class="size-3.75 rounded-[50%] bg-present"></div>
+            </td>
+          </tr>
+          <tr class=" ">
+            <td class="lg:px-4 py-2 p-2">Early Leave</td>
+            <td class="lg:px-4 py-2 p-2">04-11-2025</td>
+            <td class="lg:px-4 py-2 p-2">3</td>
+            <td class="lg:px-4 py-2 p-2 flex items-center justify-between">
+              Present
+              <div class="size-3.75 rounded-[50%] bg-present"></div>
+            </td>
+          </tr>
+          <tr>
+            <td class="lg:px-4 py-2 p-2">Overtime</td>
+            <td class="lg:px-4 py-2 p-2">20-11-2025</td>
+            <td class="lg:px-4 py-2 p-2">3</td>
+            <td class="lg:px-4 py-2 p-2 flex items-center justify-between">
+              Present
+              <div class="size-3.75 rounded-[50%] bg-present"></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="flex justify-end p-2 gap-4">
+        <button
+          class="flex items-center justify-center size-10 rounded bg-second cursor-pointer"
+        >
+          <i class="text-[20px] fa-solid fa-angle-left text-white"></i>
+        </button>
+        <button
+          class="flex items-center justify-center size-10 rounded bg-second cursor-pointer"
+        >
+          <i class="text-[20px] fa-solid fa-angle-right text-white"></i>
+        </button>
+      </div>
+    }
+
+    <!-- end request table -->
+  </div>
+</div>
+
+<!-- end reuest in normal -->
+
+<!-- leave request model-->
+<div #leaveForm class="hidden" [class.!block]="requsetForm == 'leave'">
+  <div class="flex justify-end mb-5">
+    <div
+      (click)="
+        leaveForm.classList.add('hidden');
+        parent.classList.remove('hidden');
+        requsetForm = ''
+      "
+      class="size-10 rounded-[50%] cursor-pointer flex items-center justify-center border border-main"
+    >
+      <i class="text-[20px] fa-solid fa-xmark text-main"></i>
+    </div>
+  </div>
+
+  <div class="flex lg:justify-between flex-col lg:flex-row lg:gap-5">
+    <div class="leave-request-image lg:w-1/2">
+      <img src="../images/leave-request-image.png" alt="" />
+    </div>
+    <form class="flex flex-col gap-7 p-5 justify-center lg:w-1/2 grow">
+      <div class="flex flex-col gap-2">
+        <label for="leave_type">Leave Type :</label>
+        <select
+          id="leave_type"
+          class="rounded-[8px] focus:border-main focus:border border border-bg"
+        >
+          <option disabled>Leave Type</option>
+          <option value="Sick">Sick</option>
+          <option value="Anuual">Anuual</option>
+          <option value="Casual">Casual</option>
+          <option value="Unpaid">Unpaid</option>
+        </select>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label for="start-date">Start Date :</label>
+        <input
+          type="date"
+          id="start-date"
+          class="rounded-[8px] focus:border focus:border-main border border-bg"
+          placeholder="Start Date"
+        />
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label for="end-date">End Date :</label>
+        <input
+          type="date"
+          id="end-date"
+          class="rounded-[8px] focus:border focus:border-main border border-bg"
+          placeholder="End Date"
+        />
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label for="reason">Reason :</label>
+        <textarea
+          rows="10"
+          type="date"
+          id="reason"
+          class="rounded-[8px] focus:border focus:border-main border border-bg resize-none"
+          placeholder="Reason...."
+        ></textarea>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <input
+          [checked]="isChecked"
+          type="checkbox"
+          class="rounded-xs cursor-pointer"
+          (click)="isChecked = !isChecked"
+        />
+        <label>Half Day</label>
+      </div>
+
+      @if (isChecked == true) {
+        <div class="gap-7 flex items-start pb-7">
+          <div class="flex gap-3 items-center">
+            <input type="radio" name="timer-in-day" id="morning" />
+            <label for="morning">Morning</label>
+          </div>
+          <div class="flex gap-3 items-center">
+            <input type="radio" name="timer-in-day" id="afternoon" />
+            <label for="afternoon">Afternoon</label>
+          </div>
+        </div>
+      }
+
+      <input type="file" id="uploadFile" class="hidden" />
+
+      <label
+        for="uploadFile"
+        class="text-[15px] lg:text-mainFont flex px-4 py-2 w-fit items-center rounded-3xl justify-center mx-auto border gap-2 cursor-pointer transition-all duration-500 hover:bg-main hover:text-white hover:border-main border-second"
+      >
+        Upload Doctor’s Prescription
+        <img src="../images/upload-minimalistic-outline.png" alt="" />
+      </label>
+
+      <button
+        class="self-center bg-second px-4 py-2 rounded-3xl text-white transition-all duration-500 hover:bg-main cursor-pointer"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+<!-- end leave request model-->
+
+<!-- start remote request work -->
+
+<div
+  #RemoteWorkForm
+  class="hidden"
+  [class.!block]="requsetForm == 'remote_work'"
+>
+  <div class="flex justify-end mb-5">
+    <div
+      (click)="
+        RemoteWorkForm.classList.add('hidden');
+        parent.classList.remove('hidden');
+        requsetForm = ''
+      "
+      class="size-10 rounded-[50%] cursor-pointer flex items-center justify-center border border-main"
+    >
+      <i class="text-[20px] fa-solid fa-xmark text-main"></i>
+    </div>
+  </div>
+
+  <div class="flex lg:justify-between flex-col lg:flex-row lg:gap-5">
+    <div class="leave-request-image lg:w-1/2">
+      <img src="../images/request-remote-work-image.png" alt="" />
+    </div>
+    <form class="flex flex-col gap-7 p-5 justify-center lg:w-1/2 grow">
+      <div class="flex flex-col gap-2">
+        <label for="start-date">Start Date :</label>
+        <input
+          type="date"
+          id="start-date"
+          class="rounded-[8px] focus:border focus:border-main border border-bg"
+          placeholder="Start Date"
+        />
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label for="end-date">End Date :</label>
+        <input
+          type="date"
+          id="end-date"
+          class="rounded-[8px] focus:border focus:border-main border border-bg"
+          placeholder="End Date"
+        />
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label for="reason">Reason :</label>
+        <textarea
+          rows="10"
+          type="date"
+          id="reason"
+          class="rounded-[8px] focus:border focus:border-main border border-bg resize-none"
+          placeholder="Reason...."
+        ></textarea>
+      </div>
+
+      <button
+        class="self-center bg-second px-4 py-2 rounded-3xl text-white transition-all duration-500 hover:bg-main cursor-pointer"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- end remote request work -->
+
+<!-- start permission model -->
+
+<div
+  #PermissionForm
+  class="hidden"
+  [class.!block]="requsetForm == 'permission'"
+>
+  <div class="flex justify-end mb-5">
+    <div
+      (click)="
+        PermissionForm.classList.add('hidden');
+        parent.classList.remove('hidden');
+        requsetForm = ''
+      "
+      class="size-10 rounded-[50%] cursor-pointer flex items-center justify-center border border-main"
+    >
+      <i class="text-[20px] fa-solid fa-xmark text-main"></i>
+    </div>
+  </div>
+
+  <div class="flex lg:justify-between flex-col lg:flex-row lg:gap-5">
+    <div class="leave-request-image lg:w-1/2">
+      <img src="../images/permission-request.png" alt="" />
+    </div>
+    <form class="flex flex-col gap-7 p-5 justify-center lg:w-1/2 grow">
+      <div class="flex flex-col gap-2">
+        <label for="leave_type">Permission Type :</label>
+        <select
+          id="leave_type"
+          class="rounded-[8px] focus:border-main focus:border border border-bg"
+        >
+          <option disabled>Permission Type</option>
+          <option value="early">Early</option>
+          <option value="late-arrival">Late Arrival</option>
+          <option value="overtime">Overtime</option>
+        </select>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label for="date">Date :</label>
+        <input
+          type="date"
+          id="date"
+          class="rounded-[8px] focus:border focus:border-main border border-bg"
+          placeholder="Date"
+        />
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label for="duration">Duration In Hours :</label>
+        <input
+          type="number"
+          id="duration"
+          class="rounded-[8px] focus:border focus:border-main border border-bg"
+          placeholder="Duration"
+        />
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <label for="reason">Reason :</label>
+        <textarea
+          rows="10"
+          type="date"
+          id="reason"
+          class="rounded-[8px] focus:border focus:border-main border border-bg resize-none"
+          placeholder="Reason...."
+        ></textarea>
+      </div>
+
+      <button
+        class="self-center bg-second px-4 py-2 rounded-3xl text-white transition-all duration-500 hover:bg-main cursor-pointer"
+      >
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- end permission model -->

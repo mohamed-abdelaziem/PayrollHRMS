@@ -1,0 +1,236 @@
+<div class="flex justify-between flex-col h-full">
+  
+  <!-- start event top section -->
+  <div
+    class="event-top py-6 gap-9 flex xl:flex-row flex-col items-center xl:items-center xl:justify-between"
+  >
+    <p
+      class="text-[27px] grow font-bold xl:w-[45%] w-full xl:text-start text-center"
+    >
+      Great opportunities ahead! <br />
+      Mark your calendar.
+    </p>
+
+    <div
+      class="xl:w-[55%] w-full border text-white xl:rounded-[100px] rounded-xl overflow-hidden border-main p-2 flex xl:flex-row flex-col gap-2.5 grow"
+    >
+      <div
+        class="bg-main  w-full xl:w-1/2  xl:rounded-l-[100px]!  xl:rounded-r-0 rounded-xl  xl:rouned-r-0   py-3.5 px-1.75 flex flex-col gap-4 items-center text-center"
+      >
+        <p class="text-[40px]">3</p>
+        <p class="text-[22px] font-bold">Trainings<br />in progress</p>
+      </div>
+
+      <div
+        class="bg-main w-full xl:w-1/2 xl:rounded-r-[100px]!  xl:rounded-l-0 rounded-xl py-3.5 px-1.75 flex flex-col gap-4 items-center text-center"
+      >
+        <p class="text-[40px]">5</p>
+        <p class="text-[22px] font-bold">Upcoming <br />Events</p>
+      </div>
+    </div>
+
+    <!-- end -->
+  </div>
+  <!--end event top section -->
+
+  <!-- start event bottom section -->
+
+  <div
+    class="rounded-[8px] border border-[#9C97A2] p-4 flex flex-col justify-start gap-4"
+  >
+    <ul class="flex justify-center  xl:justify-start lg:text-[18px]">
+      <li
+        (click)="eventNav = 'traning'"
+        class="cursor-pointer flex lg:justify-center justify-start items-center py-2 px-10   rounded-l-[16px]  lg:gap-2.5 gap-2 text-second border-main border"
+        [class.!bg-main]="eventNav == 'traning'"
+        [class.!text-white]="eventNav == 'traning'"
+      >
+        <img
+          src="./images/square-academic-cap-outline-not-active.png"
+          class="hidden"
+          [class.!inline]="eventNav !== 'traning'"
+          alt=""
+        /><img
+          src="./images/square-academic-cap-outline-active.png"
+          class="hidden"
+          [class.!inline]="eventNav == 'traning'"
+          alt=""
+        />Traning
+      </li>
+      <li
+        (click)="eventNav = 'event'"
+        class="cursor-pointer flex lg:justify-center rounded-r-[16px] justify-start items-center py-2 px-10  lg:gap-2.5 gap-2 text-second border-main border"
+        [class.!bg-main]="eventNav == 'event'"
+        [class.!text-white]="eventNav == 'event'"
+      >
+        <img
+          src="./images/calendar-date-outline-active.png"
+          class="hidden"
+          [class.!inline]="eventNav == 'event'"
+        /><img
+          src="./images/calendar-date-outline-not-active.png"
+          class="hidden"
+          [class.!inline]="eventNav !== 'event'"
+          alt=""
+        />Events
+      </li>
+    </ul>
+
+    @if (eventNav == "traning") {
+      <div class="flex flex-col gap-4">
+        <div class="flex xl:justify-end items-center">
+          <div class="flex gap-1 xl:gap-6 xl:w-fit w-full lg:flex-row flex-col">
+            <input
+              placeholder="Search...."
+              type="search"
+              class="rounded-[16px] border border-[#9C97A2]text-[#9C97A2] px-1 lg:w-1/2 w-full block xl:w-64.75 focus:border-main focus:ring-0 ring:border-0 focus:outline-0"
+            />
+
+
+            <div class="w-full lg:w-1/2 relative">
+              <button
+              (click)="dropDownIsShow = !dropDownIsShow"
+              class="xl:w-48.25 w-full inline-flex items-center justify-between py-2.5 px-1 focus:outline-none border border-[#9C97A2] rounded-[16px] text-[#9C97A2] text-center focus:border-main focus:ring-0 ring:border-0 focus:outline-0"
+              type="button"
+            >
+              <p class="text-center items-center mx-auto text-[#545157] cursor-pointer">All</p>
+              <svg
+                class="w-4 h-4 ms-1.5 -me-0.5 cursor-pointer"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m19 9-7 7-7-7"
+                />
+              </svg>
+            </button>
+
+            <!-- Dropdown menu -->
+            <div
+            [class.!block]="dropDownIsShow"
+              id="dropdown"
+              class="z-10 hidden absolute end-0 start-0 mt-1 bg-gray-200 border border-[#9C97A2] rounded-[16px] text-center"
+            >
+              <ul
+                class="p-2 text-sm text-[#545157] font-medium"
+                aria-labelledby="dropdownDefaultButton"
+              >
+                <li >
+                  <a  class="cursor-pointer inline-flex items-center w-full p-2 hover:bg-white rounded-[16px]"
+                    >All</a
+                  >
+                </li>
+                <li>
+                  <a  class="cursor-pointer inline-flex items-center w-full p-2 hover:bg-white rounded-[16px]"
+                    >Settings</a
+                  >
+                </li>
+                <li>
+                  <a  class="cursor-pointer inline-flex items-center w-full p-2 hover:bg-white rounded-[16px]"
+                    >Earnings</a
+                  >
+                </li>
+              </ul>
+            </div>
+            </div>
+
+
+
+          </div>
+        </div>
+
+          <!-- table -->
+    <table>
+    
+        <tbody class="text-2xs md:text-mainFont ">
+            <tr class="py-4 flex justify-between items-center  flex-wrap gap-2 border-b border-[#9C97A2]">
+            <td>Leadership Development Bootcamp</td>
+            <td class="text-[#9C97A2] ">Starts Dec 13, 2025</td>
+            <td class=" border border-main px-1.5 py-1.25 rounded-[16px]">In Progress</td>
+            </tr>
+            <tr class="py-4 flex justify-between items-center flex-wrap gap-2 border-b border-[#9C97A2]">
+            <td>Leadership Development Bootcamp</td>
+            <td class="text-[#9C97A2] ">Starts Dec 13, 2025</td>
+            <td class=" border border-green-500 text-green-500 px-1.5 py-1.25 rounded-[16px]">Completed</td>
+            </tr>
+            <tr class="py-4 flex justify-between items-center flex-wrap gap-2 border-b border-[#9C97A2]">
+            <td>Leadership Development Bootcamp</td>
+            <td class="text-[#9C97A2]">Starts Dec 13, 2025</td>
+            <td class=" border border-main px-1.5 py-1.25 rounded-[16px]">In Progress</td>
+            </tr>
+            <tr class="py-4 flex justify-between items-center flex-wrap gap-2 border-b border-[#9C97A2]">
+            <td>Leadership Development Bootcamp</td>
+            <td class="text-[#9C97A2]">Starts Dec 13, 2025</td>
+            <td class=" border border-main px-1.5 py-1.25 rounded-[16px]">In Progress</td>
+            </tr>
+     
+    
+
+        </tbody>
+
+
+
+
+
+
+    </table>
+
+      </div>
+    }@else {
+        <div class="flex flex-col gap-4">
+        <div class="flex justify-end items-center">
+        
+            <input
+              placeholder="Search...."
+              type="search"
+              class="rounded-[16px] border border-[#9C97A2]text-[#9C97A2] px-1 w-1/2 block xl:w-64.75 focus:border-main focus:ring-0 ring:border-0 focus:outline-0"
+            />
+
+        </div>
+
+          <!-- table -->
+    <table>
+    
+        <tbody class="text-2xs md:text-mainFont">
+            <tr class="py-4 flex justify-between items-center flex-wrap gap-2 border-b border-[#9C97A2]">
+            <td>Leadership Development Bootcamp</td>
+            <td class="text-[#9C97A2]">Starts Dec 13, 2025</td>
+            </tr>
+            <tr class="py-4 flex justify-between items-center flex-wrap gap-2 border-b border-[#9C97A2]">
+            <td>Leadership Development Bootcamp</td>
+            <td class="text-[#9C97A2]">Starts Dec 13, 2025</td>
+            </tr>
+            <tr class="py-4 flex justify-between items-center flex-wrap gap-2 border-b border-[#9C97A2]">
+            <td>Leadership Development Bootcamp</td>
+            <td class="text-[#9C97A2]">Starts Dec 13, 2025</td>
+            </tr>
+            <tr class="py-4 flex justify-between items-center flex-wrap gap-2 border-b border-[#9C97A2]">
+            <td>Leadership Development Bootcamp</td>
+            <td class="text-[#9C97A2]">Starts Dec 13, 2025</td>
+            </tr>
+     
+    
+
+        </tbody>
+
+
+
+
+
+
+    </table>
+
+      </div>
+    }
+  </div>
+
+  <!-- end event bottom section -->
+</div>

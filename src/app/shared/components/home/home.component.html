@@ -1,0 +1,225 @@
+<div class="flex flex-col gap-8">
+  <!-- start head of home -->
+  <div
+    class="head-of-home py-10 px-5 md:py-18.5 md:px-10 md:space-y-4 rounded-[16px] text-white"
+  >
+    <h1 class="md:text-[35px] text-[20px] font-bold leading-9">
+      Good Morning Mohamed
+    </h1>
+    <p>Lorem ipsum dolor sit amet.</p>
+  </div>
+  <!-- end head of home -->
+
+  <!-- <div class="p-4 flex flex-col gap-3 rounded-3xl border border-bg">
+    <h2 class="w-fit border-b-2 text-[20px] border-main pb-1 font-semibold">
+      Annual Leave
+    </h2>
+    <div class="relative w-62.5 h-62.5">
+      <ngx-charts-pie-chart
+        [results]="annualLeave"
+        [scheme]="scheme"
+        [doughnut]="true"
+        [legend]="false"
+        [labels]="false"
+        [view]="[250, 300]"
+      >
+      </ngx-charts-pie-chart>
+      <p
+        class="absolute top-[50%] left-[50%] -translate-[50%] block text-[24px] font-semibold"
+      >
+        21
+      </p>
+    </div>
+    <div class="flex flex-col ">
+      <div class="flex items-center justify-between">
+        <div class="flex gap-4 items-center">
+          <span class="w-4 h-4 rounded-full bg-main"></span>
+          <p class="text-[#4B4B4B]">Remining</p>
+        </div>
+        <p class="text-[#4B4B4B]">{{ annualLeave[1].value }}</p>
+      </div>
+    </div>
+    <div class="flex flex-col ">
+      <div class="flex items-center justify-between">
+        <div class="flex gap-4 items-center">
+          <span class="w-4 h-4 rounded-full bg-bg"></span>
+          <p class="text-[#4B4B4B]">Remining</p>
+        </div>
+        <p class="text-[#4B4B4B]">{{ annualLeave[1].value }}</p>
+      </div>
+    </div>
+  </div> -->
+
+  <!-- start of chart -->
+  <div
+    class="flex flex-col items-start p-3 lg:py-7 lg:px-4 rounded-3xl self-stretch gap-4 border-2 border-bg"
+  >
+    <p
+      class="bg-main flex py-2 md:px-10 px-2 gap-3 justify-center rounded-r-[16px] text-white"
+    >
+      <img src="../images/sort-by-time-outline-active.png" alt="" />Month’s
+      performance
+    </p>
+    <!-- chart -->
+<div class="grid md:grid-cols-3 gap-4 w-full">
+ <div class="p-4 flex flex-col gap-3 rounded-3xl border border-bg">
+    <h2 class="w-fit border-b-2 text-[14px] border-main pb-1 font-semibold">
+      Annual Leave
+    </h2>
+    <div class="relative  flex justify-center  ">
+      <ngx-charts-pie-chart
+        [results]="annualLeave"
+        [scheme]="scheme"
+        [doughnut]="true"
+        [legend]="false"
+        [labels]="false"
+        [view]="[250, 250]"
+      >
+      </ngx-charts-pie-chart>
+      <p
+        class="absolute top-[50%] left-[50%] -translate-[50%] block text-[24px] font-semibold"
+      >
+        21
+      </p>
+    </div>
+    <div class="flex flex-col ">
+      <div class="flex items-center justify-between">
+        <div class="flex gap-4 items-center">
+          <span class="w-4 h-4 rounded-full bg-main"></span>
+          <p class="text-[#4B4B4B]">Remaining</p>
+        </div>
+        <p class="text-[#4B4B4B]">{{ annualLeave[1].value }}</p>
+      </div>
+    </div>
+    <div class="flex flex-col ">
+      <div class="flex items-center justify-between">
+        <div class="flex gap-4 items-center">
+          <span class="w-4 h-4 rounded-full bg-bg"></span>
+          <p class="text-[#4B4B4B]">Used</p>
+        </div>
+        <p class="text-[#4B4B4B]">{{ annualLeave[0].value }}</p>
+      </div>
+    </div>
+  </div>
+
+   <div class="p-4 flex flex-col gap-3 rounded-3xl border border-bg">
+    <h2 class="w-fit border-b-2 text-[14px] border-main pb-1 font-semibold">
+     Sick Leave
+    </h2>
+    <div class="relative  flex justify-center">
+      <ngx-charts-pie-chart
+        [results]="annualLeave"
+        [scheme]="scheme"
+        [doughnut]="true"
+        [legend]="false"
+        [labels]="false"
+        [view]="[250, 250]"
+      >
+      </ngx-charts-pie-chart>
+      <p
+        class="absolute top-[50%] left-[50%] -translate-[50%] block text-[24px] font-semibold"
+      >
+        21
+      </p>
+    </div>
+    <div class="flex flex-col ">
+      <div class="flex items-center justify-between">
+        <div class="flex gap-4 items-center">
+          <span class="w-4 h-4 rounded-full bg-main"></span>
+          <p class="text-[#4B4B4B]">Remaining</p>
+        </div>
+        <p class="text-[#4B4B4B]">{{ annualLeave[1].value }}</p>
+      </div>
+    </div>
+    <div class="flex flex-col ">
+      <div class="flex items-center justify-between">
+        <div class="flex gap-4 items-center">
+          <span class="w-4 h-4 rounded-full bg-bg"></span>
+          <p class="text-[#4B4B4B]">Used</p>
+        </div>
+        <p class="text-[#4B4B4B]">{{ annualLeave[0].value }}</p>
+      </div>
+    </div>
+  </div>
+
+   <div class="p-4 flex flex-col gap-3 rounded-3xl border border-bg">
+    <h2 class="w-fit border-b-2 text-[14px] border-main pb-1 font-semibold">
+      This Month’s Attendance
+    </h2>
+    <div class="relative  flex justify-center">
+      <ngx-charts-pie-chart
+        [results]="annualLeave"
+        [scheme]="scheme"
+        [doughnut]="true"
+        [legend]="false"
+        [labels]="false"
+        [view]="[250, 250]"
+      >
+      </ngx-charts-pie-chart>
+      <p
+        class="absolute top-[50%] left-[50%] -translate-[50%] block text-[24px] font-semibold"
+      >
+        21
+      </p>
+    </div>
+    <div class="flex flex-col ">
+      <div class="flex items-center justify-between">
+        <div class="flex gap-4 items-center">
+          <span class="w-4 h-4 rounded-full bg-main"></span>
+          <p class="text-[#4B4B4B]">Remaining</p>
+        </div>
+        <p class="text-[#4B4B4B]">{{ annualLeave[1].value }}</p>
+      </div>
+    </div>
+    <div class="flex flex-col ">
+      <div class="flex items-center justify-between">
+        <div class="flex gap-4 items-center">
+          <span class="w-4 h-4 rounded-full bg-bg"></span>
+          <p class="text-[#4B4B4B]">Used</p>
+        </div>
+        <p class="text-[#4B4B4B]">{{ annualLeave[0].value }}</p>
+      </div>
+    </div>
+  </div>
+<!-- <apx-chart class="w-full"
+  [series]="chartOptions.series"
+  [chart]="chartOptions.chart"
+  [xaxis]="chartOptions.xaxis"
+  [yaxis]="chartOptions.yaxis"
+  [dataLabels]="chartOptions.dataLabels"
+  [plotOptions]="chartOptions.plotOptions"
+  [grid]="chartOptions.grid"
+  [tooltip]="chartOptions.tooltip"
+  [states]="chartOptions.states"
+  [colors]="chartOptions.colors">
+</apx-chart> -->
+
+
+
+
+</div>
+    <!-- end chart -->
+  </div>
+  <!-- end of chart -->
+  <!-- start group of buttons -->
+  <div
+    class="flex flex-col items-center md:flex-row justify-center gap-2 lg:gap-20"
+  >
+    <button
+      class="md:w-fit w-[80%] rounded-[8px] py-4 px-6 gap-4 text-white cursor-pointer bg-second flex items-center justify-center hover:bg-main transition-all duration-500"
+    >
+      <img src="../images/Frame-427321191.png" alt="" />Leave
+    </button>
+    <button
+      class="md:w-fit w-[80%] rounded-[8px] py-4 px-6 gap-4 text-white cursor-pointer bg-second flex items-center justify-center hover:bg-main transition-all duration-500"
+    >
+      <img src="../images/home-icon.png" alt="" />Remote work
+    </button>
+    <button
+      class="md:w-fit w-[80%] rounded-[8px] py-4 px-6 gap-4 text-white cursor-pointer bg-second flex items-center justify-center hover:bg-main transition-all duration-500"
+    >
+      <img src="../images/clock-circle.png" alt="" />Permission
+    </button>
+  </div>
+  <!-- end of group of buttons -->
+</div>
